@@ -831,7 +831,9 @@ PHP_MINFO_FUNCTION(zbarcode)
 	char *zbar_ver = NULL;
 	unsigned long magick_version;
 
-	zbar_version(&major, &minor, &patch);
+	/* Commented out the third param : zbarcode.c:834:2: error: too many arguments to function ‘zbar_version’ */
+	/* zbar_version(&major, &minor, &patch); */
+	zbar_version(&major, &minor);
 	spprintf(&zbar_ver, 24, "%d.%d.%d", major, minor,patch);
 
 	php_info_print_table_start();

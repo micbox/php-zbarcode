@@ -724,7 +724,7 @@ PHP_MINIT_FUNCTION(zbarcode)
 		Initialize exceptions (zbarcode exception)
 	*/
 	INIT_CLASS_ENTRY(ce, "zbarcodeexception", NULL);
-	php_zbarcode_exception_class_entry = zend_register_internal_class_ex(&ce, zend_exception_get_default(TSRMLS_C));
+	php_zbarcode_exception_class_entry = zend_register_internal_class_ex(&ce, zend_exception_get_default());
 	php_zbarcode_exception_class_entry->ce_flags |= ZEND_ACC_FINAL;
 
 	/*

@@ -839,14 +839,14 @@ PHP_MINFO_FUNCTION(zbarcode)
 	/* zbar_version(&major, &minor); */
 	/* spprintf(&zbar_ver, 24, "%d.%d.%d", major, minor,patch); */
 	
-#if ZBAR_VERSION_MAJOR >= 0 && ZBAR_VERSION_MINOR >= 20
+/* #if ZBAR_VERSION_MAJOR >= 0 && ZBAR_VERSION_MINOR >= 20 */
     const char *version = zbar_version();
     php_printf("ZBar version: %s\n", version);
-#else
+/* #else
     int major, minor;
     zbar_version(&major, &minor);
-    php_printf("ZBar version: %d.%d\n", major, minor);
-#endif	
+    php_printf("ZBar version: %d.%d\n", major, minor); */
+/* #endif */
 
 	php_info_print_table_start();
 	php_info_print_table_row(2, "zbarcode module",			"enabled");

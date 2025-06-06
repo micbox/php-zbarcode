@@ -833,8 +833,19 @@ PHP_MINFO_FUNCTION(zbarcode)
 
 	/* Commented out the third param : zbarcode.c:834:2: error: too many arguments to function ‘zbar_version’ */
 	/* zbar_version(&major, &minor, &patch); */
-	zbar_version(&major, &minor);
-	spprintf(&zbar_ver, 24, "%d.%d.%d", major, minor,patch);
+	
+	/* 2025-06-06 OL8 setup: bugfix for zbarimg --version > 0.20 => 0.23.90 */
+	/* zbar_version(&major, &minor); */
+	/* spprintf(&zbar_ver, 24, "%d.%d.%d", major, minor,patch); */
+	
+#if ZBAR_VERSION_MAJOR >= 0 && ZBAR_VERSION_MINOR >= 20
+    const char *version = zbar_version();
+    php_printf("ZBar version: %s\n", version);
+#else
+    int major, minor;
+    zbar_version(&major, &minor);
+    php_printf("ZBar version: %d.%d\n", major, minor);
+#endif	
 
 	php_info_print_table_start();
 	php_info_print_table_row(2, "zbarcode module",			"enabled");

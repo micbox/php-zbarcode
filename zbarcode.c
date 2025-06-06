@@ -18,6 +18,7 @@
 
 #include "php_zbarcode.h"
 #include "ext/standard/info.h"
+#include <zbar.h>
 
 /* Handlers */
 static zend_object_handlers php_zbarcode_object_handlers;
